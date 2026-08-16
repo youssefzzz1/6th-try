@@ -105,17 +105,21 @@ a:hover { color: var(--grey-400); }
 
 .lede { font-size: 1.05rem; color: var(--grey-500); font-weight: 300; }
 
+/* Masqué en le sortant vers le haut, et non vers la gauche : un décalage
+   horizontal négatif crée une zone de défilement géante en écriture RTL. */
 .skip-link {
   position: absolute;
-  left: -9999px;
-  top: 0;
+  inset-block-start: 0;
+  inset-inline-start: 0;
   z-index: 200;
   background: var(--white);
   color: var(--black);
   padding: 12px 20px;
   font-weight: 600;
+  transform: translateY(-200%);
+  transition: transform .2s var(--ease);
 }
-.skip-link:focus { left: 0; color: var(--black); }
+.skip-link:focus { transform: translateY(0); color: var(--black); }
 
 /* --- Buttons ------------------------------------------------------------ */
 .btn {
@@ -184,7 +188,7 @@ a:hover { color: var(--grey-400); }
   align-items: center;
   gap: 13px;
   color: var(--white);
-  margin-right: auto;
+  margin-inline-end: auto;
 }
 .brand:hover { color: var(--white); }
 
@@ -414,7 +418,7 @@ a:hover { color: var(--grey-400); }
   background: var(--charcoal-2);
 }
 .link-card .ico { width: 19px; height: 19px; color: var(--white); }
-.link-card > span { display: flex; flex-direction: column; line-height: 1.4; text-align: left; }
+.link-card > span { display: flex; flex-direction: column; line-height: 1.4; text-align: start; }
 .link-card strong {
   color: var(--white);
   font-size: .8rem;
@@ -501,8 +505,8 @@ a:hover { color: var(--grey-400); }
 
 .badge {
   position: absolute;
-  top: 0;
-  left: 0;
+  inset-block-start: 0;
+  inset-inline-start: 0;
   display: inline-flex;
   align-items: center;
   gap: 6px;
@@ -537,7 +541,7 @@ a:hover { color: var(--grey-400); }
 .tag {
   display: inline-block;
   vertical-align: middle;
-  margin-left: 10px;
+  margin-inline-start: 10px;
   padding: 4px 10px;
   border: 1px solid var(--line-strong);
   color: var(--grey-400);
@@ -644,7 +648,7 @@ a:hover { color: var(--grey-400); }
 .note {
   font-size: .84rem !important;
   padding: 16px 18px;
-  border-left: 1px solid var(--line-strong);
+  border-inline-start: 1px solid var(--line-strong);
   background: var(--charcoal);
   color: var(--grey-500) !important;
 }
@@ -801,7 +805,7 @@ a:hover { color: var(--grey-400); }
 .on-light .hours .closed dd { color: #6b6b6b; }
 .on-light .note {
   background: #ededed;
-  border-left-color: rgba(0, 0, 0, .28);
+  border-inline-start-color: rgba(0, 0, 0, .28);
   color: #3a3a3a !important;
 }
 .on-light .panel-accent { background: var(--black); }
@@ -854,6 +858,132 @@ a:hover { color: var(--grey-400); }
   border-color: var(--black);
 }
 
+/* --- Sélecteur de langue ------------------------------------------------- */
+.lang { position: relative; flex: none; }
+
+.lang-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font: inherit;
+  font-size: .74rem;
+  font-weight: 600;
+  letter-spacing: .12em;
+  padding: 10px 14px;
+  background: transparent;
+  border: 1px solid var(--line-strong);
+  color: var(--white);
+  cursor: pointer;
+  transition: background-color .25s var(--ease), border-color .25s var(--ease);
+}
+.lang-btn:hover { background: rgba(255, 255, 255, .1); border-color: var(--white); }
+.lang-btn .ico { width: 16px; height: 16px; }
+.lang-code { min-width: 1.4em; text-align: center; }
+
+.lang-menu {
+  position: absolute;
+  inset-block-start: calc(100% + 8px);
+  inset-inline-end: 0;
+  z-index: 120;
+  min-width: 200px;
+  /* Filet de sécurité : le menu ne peut jamais dépasser la fenêtre, quelle
+     que soit la largeur de l'écran. */
+  max-width: calc(100vw - 32px);
+  max-height: 60vh;
+  overflow-y: auto;
+  padding: 6px;
+  background: var(--coal);
+  border: 1px solid var(--line-strong);
+  box-shadow: var(--shadow-lg);
+  display: none;
+}
+.lang-menu.open { display: block; }
+
+.lang-menu button {
+  display: block;
+  width: 100%;
+  padding: 11px 14px;
+  font: inherit;
+  font-size: .9rem;
+  text-align: start;
+  background: transparent;
+  border: 0;
+  color: var(--grey-400);
+  cursor: pointer;
+  transition: background-color .18s var(--ease), color .18s var(--ease);
+}
+.lang-menu button:hover { background: var(--graphite); color: var(--white); }
+.lang-menu button[aria-selected="true"] {
+  color: var(--black);
+  background: var(--white);
+  font-weight: 700;
+}
+
+/* --- Écriture de droite à gauche ---------------------------------------- */
+/* La mise en page utilise des propriétés logiques : l'inversion est donc
+   surtout automatique. Ne restent que les cas réellement directionnels. */
+[dir="rtl"] .site-nav a::after { transform-origin: right; }
+
+/* `.hero-bg` est un calque décoratif vide : on peut le refléter sans risque
+   pour que la lueur suive la direction de lecture. On ne reflète surtout pas
+   une section porteuse de texte — ses enfants hériteraient du repère inversé
+   et le texte s'afficherait en miroir. Le dégradé de `.cta-band` est centré,
+   donc symétrique : il n'a rien à inverser. */
+[dir="rtl"] .hero-bg { transform: scaleX(-1); }
+
+/* --- Typographie par écriture -------------------------------------------- */
+/* L'arabe est une écriture liée : un letter-spacing y disloque visuellement
+   les lettres d'un même mot. Il n'a pas non plus de casse, donc les
+   majuscules décoratives n'ont aucun sens. On neutralise les deux. */
+[lang="ar"] body,
+[lang="ar"] .btn,
+[lang="ar"] .eyebrow,
+[lang="ar"] .brand-name,
+[lang="ar"] .site-nav a,
+[lang="ar"] .feature h3,
+[lang="ar"] .card-body h3,
+[lang="ar"] .panel h3,
+[lang="ar"] .site-footer h4,
+[lang="ar"] .badge,
+[lang="ar"] .tag,
+[lang="ar"] .price span,
+[lang="ar"] .trust-row span,
+[lang="ar"] .call-bar,
+[lang="ar"] .lang-btn,
+[lang="ar"] .card-media.is-missing::after {
+  letter-spacing: normal;
+  text-transform: none;
+}
+[lang="ar"] body {
+  font-family: "Noto Naskh Arabic", "Segoe UI", Tahoma, "Geeza Pro", "Arial", sans-serif;
+  line-height: 1.9;
+}
+[lang="ar"] h1, [lang="ar"] h2, [lang="ar"] h3, [lang="ar"] h4 { letter-spacing: normal; }
+
+/* Le chinois n'a pas de casse et supporte mal l'interlettrage appuyé. */
+[lang="zh"] body {
+  font-family: "Plus Jakarta Sans", "PingFang SC", "Microsoft YaHei",
+               "Hiragino Sans GB", "Noto Sans SC", sans-serif;
+}
+[lang="zh"] .eyebrow,
+[lang="zh"] .feature h3,
+[lang="zh"] .card-body h3,
+[lang="zh"] .panel h3,
+[lang="zh"] .site-footer h4,
+[lang="zh"] .btn,
+[lang="zh"] .site-nav a,
+[lang="zh"] .badge,
+[lang="zh"] .tag,
+[lang="zh"] .trust-row span,
+[lang="zh"] .price span,
+[lang="zh"] .call-bar {
+  letter-spacing: .04em;
+  text-transform: none;
+}
+
+/* Le vietnamien empile beaucoup de diacritiques : un peu d'air en plus. */
+[lang="vi"] body { line-height: 1.8; }
+
 /* --- Responsive --------------------------------------------------------- */
 @media (max-width: 900px) {
   .footer-grid { grid-template-columns: 1fr 1fr; }
@@ -867,6 +997,7 @@ a:hover { color: var(--grey-400); }
   .feature-grid { gap: 36px; }
   .header-cta { display: none; }
   .nav-toggle { display: block; }
+  .lang-btn { padding: 9px 11px; }
 
   .site-nav {
     position: absolute;
