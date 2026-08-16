@@ -349,9 +349,10 @@ a:hover { color: var(--grey-400); }
 }
 
 /* --- Features strip ----------------------------------------------------- */
+/* Bandeau clair : seule section inversée en noir sur blanc, elle sépare
+   l'en-tête de la présentation et rythme la page. */
 .features {
-  background: var(--near-black);
-  border-bottom: 1px solid var(--line);
+  background: var(--white);
   padding: 88px 0;
 }
 
@@ -368,8 +369,8 @@ a:hover { color: var(--grey-400); }
   place-items: center;
   margin-bottom: 22px;
   color: var(--white);
-  background: var(--charcoal);
-  border: 1px solid var(--line);
+  background: var(--black);
+  border: 1px solid var(--black);
 }
 .feature-ico svg { width: 21px; height: 21px; }
 
@@ -378,9 +379,10 @@ a:hover { color: var(--grey-400); }
   font-weight: 600;
   letter-spacing: .18em;
   text-transform: uppercase;
+  color: var(--black);
   margin-bottom: 10px;
 }
-.feature p { font-size: .93rem; font-weight: 300; color: var(--grey-500); margin: 0; }
+.feature p { font-size: .93rem; font-weight: 300; color: #3a3a3a; margin: 0; }
 
 /* --- About -------------------------------------------------------------- */
 .about { background: var(--near-black); }
