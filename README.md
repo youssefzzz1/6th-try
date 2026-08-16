@@ -1,28 +1,61 @@
-# Car Wash Page Setup
-  
-This is a project built with [Chef](https://chef.convex.dev) using [Convex](https://convex.dev) as its backend.
-  
-This project is connected to the Convex deployment named [`adamant-condor-224`](https://dashboard.convex.dev/d/adamant-condor-224).
-  
-## Project structure
-  
-The frontend code is in the `app` directory and is built with [Vite](https://vitejs.dev/).
-  
-The backend code is in the `convex` directory.
-  
-`npm run dev` will start the frontend and backend servers.
+# Lave Auto Express 2007
 
-## App authentication
+Site vitrine du **Lave Auto Express 2007**, un lave-auto situé à Longueuil, Québec.
 
-Chef apps use [Convex Auth](https://auth.convex.dev/) with Anonymous auth for easy sign in. You may wish to change this before deploying your app.
+Site statique : aucun build, aucune dépendance, aucun serveur requis.
 
-## Developing and deploying your app
+## Structure
 
-Check out the [Convex docs](https://docs.convex.dev/) for more information on how to develop with Convex.
-* If you're new to Convex, the [Overview](https://docs.convex.dev/understanding/) is a good place to start
-* Check out the [Hosting and Deployment](https://docs.convex.dev/production/) docs for how to deploy your app
-* Read the [Best Practices](https://docs.convex.dev/understanding/best-practices/) guide for tips on how to improve you app further
+| Fichier       | Rôle                                                        |
+| ------------- | ----------------------------------------------------------- |
+| `index.html`  | Contenu et structure de la page, incluant les données SEO    |
+| `style.css`   | Styles, jetons de design et adaptations responsives          |
+| `script.js`   | Menu mobile, année du pied de page, repli des images         |
+| `favicon.svg` | Icône du site                                                |
+| `images/`     | Photos des véhicules nettoyés à l'atelier                    |
 
-## HTTP API
+### Photos des services
 
-User-defined http routes are defined in the `convex/router.ts` file. We split these routes into a separate file from `convex/http.ts` to allow us to prevent the LLM from modifying the authentication routes.
+Trois tuiles utilisent des photos hébergées dans le dépôt :
+
+| Fichier                                  | Service                      |
+| ---------------------------------------- | ---------------------------- |
+| `images/lavage-interieur-exterieur.webp` | Lavage Intérieur & Extérieur |
+| `images/shampooing-sieges.webp`          | Shampooing                   |
+| `images/remise-a-neuf.webp`              | Remise à Neuf                |
+
+Si un de ces fichiers est absent, la tuile bascule automatiquement vers un visuel
+de remplacement « Photo à venir » — la page reste propre, sans image brisée.
+
+## Développement local
+
+Ouvrez simplement `index.html` dans votre navigateur, ou servez le dossier :
+
+```bash
+python -m http.server 8000
+```
+
+Le site est ensuite accessible sur <http://localhost:8000>.
+
+## Déploiement
+
+N'importe quel hébergeur de fichiers statiques convient — GitHub Pages, Netlify,
+Cloudflare Pages, Vercel. Il suffit de publier le contenu du dépôt tel quel ;
+aucune étape de compilation n'est nécessaire.
+
+Pour GitHub Pages : *Settings → Pages → Deploy from a branch → `main` / `root`*.
+
+## À mettre à jour avant la mise en ligne
+
+- `<link rel="canonical">` dans `index.html` — remplacer par le domaine réel.
+- Deux tuiles (« Lavage Extérieur Complet » et « Cire ou Compound ») pointent encore
+  vers des photos hébergées sur Google Business Profile. Ces adresses peuvent expirer ;
+  il est préférable de déplacer ces images dans `images/` comme les autres.
+- L'adresse municipale exacte peut être ajoutée dans le bloc `application/ld+json`
+  (champ `streetAddress`) afin d'améliorer le référencement local.
+
+## Coordonnées
+
+**Téléphone :** 450-679-6095
+**Horaire :** lundi au samedi, 9h00 – 17h00 (fermé le dimanche)
+**Paiement :** comptant seulement
