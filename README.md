@@ -45,6 +45,13 @@ aucune étape de compilation n'est nécessaire.
 
 Pour GitHub Pages : *Settings → Pages → Deploy from a branch → `main` / `root`*.
 
+Pour Vercel : la configuration est déjà dans `vercel.json` (aucune compilation,
+racine du dépôt comme dossier de sortie). Si un déploiement échoue encore sur
+`vite: command not found`, c'est qu'un réglage du tableau de bord datant de
+l'ancienne version React/Convex prend le dessus : dans *Settings → Build and
+Deployment*, remettre « Framework Preset » sur **Other** et vider le champ
+« Build Command ».
+
 ## À mettre à jour avant la mise en ligne
 
 - `<link rel="canonical">` dans `index.html` — remplacer par le domaine réel.
