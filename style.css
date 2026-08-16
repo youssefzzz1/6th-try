@@ -319,20 +319,20 @@ a:hover { color: var(--grey-400); }
 .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; }
 .center-actions { justify-content: center; }
 
+/* Tuiles de réassurance : fond gris posé sur le noir de l'en-tête. Les
+   séparateurs en filet ne sont plus nécessaires, le fond sépare déjà. */
 .trust-row {
   display: flex;
   flex-wrap: wrap;
-  gap: 0;
-  margin-top: 72px;
-  border-top: 1px solid var(--line);
+  gap: 12px;
+  margin-top: 64px;
 }
 .trust-row li {
   flex: 1 1 180px;
-  padding: 26px 28px 0 0;
-  margin-right: 28px;
-  border-right: 1px solid var(--line);
+  padding: 22px 26px;
+  background: var(--graphite);
+  border: 1px solid var(--line);
 }
-.trust-row li:last-child { border-right: 0; margin-right: 0; }
 .trust-row strong {
   display: block;
   color: var(--white);
@@ -345,7 +345,9 @@ a:hover { color: var(--grey-400); }
   font-size: .72rem;
   letter-spacing: .16em;
   text-transform: uppercase;
-  color: var(--grey-600);
+  /* Un cran plus clair que les autres libellés : le fond gris des tuiles
+     réduit le contraste, --grey-600 y tomberait sous 4.5:1. */
+  color: var(--grey-500);
 }
 
 /* --- Features strip ----------------------------------------------------- */
@@ -889,14 +891,7 @@ a:hover { color: var(--grey-400); }
   .services-grid { grid-template-columns: 1fr; }
   .card-cta .btn { align-self: stretch; }
 
-  .trust-row li {
-    flex-basis: 100%;
-    border-right: 0;
-    margin-right: 0;
-    padding: 20px 0;
-    border-bottom: 1px solid var(--line);
-  }
-  .trust-row li:last-child { border-bottom: 0; }
+  .trust-row li { flex-basis: 100%; padding: 18px 22px; }
 }
 
 @media (max-width: 460px) {
