@@ -491,7 +491,7 @@
 
     code.textContent = info.short;
     menu.querySelectorAll("[data-lang]").forEach(function (b) {
-      b.setAttribute("aria-selected", String(b.getAttribute("data-lang") === lang));
+      b.setAttribute("aria-checked", String(b.getAttribute("data-lang") === lang));
     });
 
     try { localStorage.setItem(STORE, lang); } catch (e) { /* navigation privée */ }

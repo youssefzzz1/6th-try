@@ -54,22 +54,27 @@
     <div class="lang" id="lang">
       <button class="lang-btn" id="langBtn" aria-haspopup="true" aria-expanded="false"
               aria-label="Choisir la langue" data-i18n-aria="lang.label">
-        <svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8">
+        <svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7">
           <circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18a15 15 0 0 1 0-18"/>
         </svg>
         <span class="lang-code" id="langCode">FR</span>
+        <span class="lang-chev" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m6 9 6 6 6-6"/>
+          </svg>
+        </span>
       </button>
-      <ul class="lang-menu" id="langMenu">
-        <li><button type="button" data-lang="fr" lang="fr" aria-selected="true">Français</button></li>
-        <li><button type="button" data-lang="en" lang="en" aria-selected="false">English</button></li>
-        <li><button type="button" data-lang="ar" lang="ar" aria-selected="false">العربية</button></li>
-        <li><button type="button" data-lang="es" lang="es" aria-selected="false">Español</button></li>
-        <li><button type="button" data-lang="it" lang="it" aria-selected="false">Italiano</button></li>
-        <li><button type="button" data-lang="pt" lang="pt" aria-selected="false">Português</button></li>
-        <li><button type="button" data-lang="ht" lang="ht" aria-selected="false">Kreyòl ayisyen</button></li>
-        <li><button type="button" data-lang="zh" lang="zh" aria-selected="false">中文</button></li>
-        <li><button type="button" data-lang="ru" lang="ru" aria-selected="false">Русский</button></li>
-        <li><button type="button" data-lang="vi" lang="vi" aria-selected="false">Tiếng Việt</button></li>
+      <ul class="lang-menu" id="langMenu" role="menu">
+        <li><button type="button" role="menuitemradio" data-lang="fr" lang="fr" aria-checked="true">Français</button></li>
+        <li><button type="button" role="menuitemradio" data-lang="en" lang="en" aria-checked="false">English</button></li>
+        <li><button type="button" role="menuitemradio" data-lang="ar" lang="ar" aria-checked="false">العربية</button></li>
+        <li><button type="button" role="menuitemradio" data-lang="es" lang="es" aria-checked="false">Español</button></li>
+        <li><button type="button" role="menuitemradio" data-lang="it" lang="it" aria-checked="false">Italiano</button></li>
+        <li><button type="button" role="menuitemradio" data-lang="pt" lang="pt" aria-checked="false">Português</button></li>
+        <li><button type="button" role="menuitemradio" data-lang="ht" lang="ht" aria-checked="false">Kreyòl ayisyen</button></li>
+        <li><button type="button" role="menuitemradio" data-lang="zh" lang="zh" aria-checked="false">中文</button></li>
+        <li><button type="button" role="menuitemradio" data-lang="ru" lang="ru" aria-checked="false">Русский</button></li>
+        <li><button type="button" role="menuitemradio" data-lang="vi" lang="vi" aria-checked="false">Tiếng Việt</button></li>
       </ul>
     </div>
 

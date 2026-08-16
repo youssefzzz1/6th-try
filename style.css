@@ -859,50 +859,86 @@ a:hover { color: var(--grey-400); }
 }
 
 /* --- Sélecteur de langue ------------------------------------------------- */
-.lang { position: relative; flex: none; }
+/* Commande utilitaire, pas une action principale : elle reste discrète pour
+   ne pas concurrencer le bouton d'appel. Un filet la sépare de la
+   navigation. */
+.lang {
+  position: relative;
+  flex: none;
+  border-inline-start: 1px solid var(--line);
+  padding-inline-start: 20px;
+  margin-inline-start: 4px;
+}
 
 .lang-btn {
   display: inline-flex;
   align-items: center;
   gap: 7px;
   font: inherit;
-  font-size: .74rem;
+  font-size: .78rem;
   font-weight: 600;
-  letter-spacing: .12em;
-  padding: 10px 14px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  padding: 8px 4px;
   background: transparent;
-  border: 1px solid var(--line-strong);
-  color: var(--white);
+  border: 0;
+  color: var(--grey-400);
   cursor: pointer;
-  transition: background-color .25s var(--ease), border-color .25s var(--ease);
+  transition: color .22s var(--ease);
 }
-.lang-btn:hover { background: rgba(255, 255, 255, .1); border-color: var(--white); }
-.lang-btn .ico { width: 16px; height: 16px; }
-.lang-code { min-width: 1.4em; text-align: center; }
+.lang-btn:hover { color: var(--white); }
+.lang-btn .ico { width: 17px; height: 17px; }
+.lang-code { min-width: 1.5em; text-align: center; }
+
+/* La rotation porte sur cette enveloppe HTML plutôt que sur le <svg> :
+   un élément SVG applique la transformation autour de l'origine de sa
+   view-box, ce qui donne des résultats moins prévisibles qu'avec une boîte
+   HTML classique. */
+.lang-chev {
+  display: inline-flex;
+  width: 13px;
+  height: 13px;
+  opacity: .8;
+  transition: transform .25s var(--ease);
+}
+.lang-chev svg { width: 100%; height: 100%; }
+.lang-btn[aria-expanded="true"] { color: var(--white); }
+.lang-btn[aria-expanded="true"] .lang-chev { transform: rotate(180deg); }
 
 .lang-menu {
   position: absolute;
-  inset-block-start: calc(100% + 8px);
+  inset-block-start: calc(100% + 14px);
   inset-inline-end: 0;
   z-index: 120;
-  min-width: 200px;
+  min-width: 224px;
   /* Filet de sécurité : le menu ne peut jamais dépasser la fenêtre, quelle
      que soit la largeur de l'écran. */
   max-width: calc(100vw - 32px);
-  max-height: 60vh;
+  max-height: min(60vh, 480px);
   overflow-y: auto;
-  padding: 6px;
-  background: var(--coal);
+  padding: 8px;
+  background: #101010;
   border: 1px solid var(--line-strong);
-  box-shadow: var(--shadow-lg);
+  box-shadow: 0 28px 56px -14px rgba(0, 0, 0, .95);
   display: none;
 }
-.lang-menu.open { display: block; }
+.lang-menu.open {
+  display: block;
+  animation: langMenuIn .16s var(--ease);
+}
+
+@keyframes langMenuIn {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: none; }
+}
 
 .lang-menu button {
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
   width: 100%;
-  padding: 11px 14px;
+  padding: 11px 13px;
   font: inherit;
   font-size: .9rem;
   text-align: start;
@@ -910,13 +946,20 @@ a:hover { color: var(--grey-400); }
   border: 0;
   color: var(--grey-400);
   cursor: pointer;
-  transition: background-color .18s var(--ease), color .18s var(--ease);
+  transition: background-color .16s var(--ease), color .16s var(--ease);
 }
 .lang-menu button:hover { background: var(--graphite); color: var(--white); }
-.lang-menu button[aria-selected="true"] {
-  color: var(--black);
-  background: var(--white);
-  font-weight: 700;
+
+/* La langue active est signalée par une coche, pas par un aplat blanc :
+   moins lourd dans une liste de dix entrées. */
+.lang-menu button[aria-checked="true"] { color: var(--white); font-weight: 700; }
+.lang-menu button[aria-checked="true"]::after {
+  content: "";
+  width: 15px;
+  height: 15px;
+  flex: none;
+  background: no-repeat center / contain
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m5 12.5 5 5 9-11'/%3E%3C/svg%3E");
 }
 
 /* --- Écriture de droite à gauche ---------------------------------------- */
@@ -997,7 +1040,10 @@ a:hover { color: var(--grey-400); }
   .feature-grid { gap: 36px; }
   .header-cta { display: none; }
   .nav-toggle { display: block; }
-  .lang-btn { padding: 9px 11px; }
+  /* Sans les liens de navigation, le filet séparateur n'a plus rien à
+     séparer : il flotterait à côté du logo. */
+  .lang { border-inline-start: 0; padding-inline-start: 0; margin-inline-start: 0; }
+  .lang-btn { padding: 9px 6px; }
 
   .site-nav {
     position: absolute;
