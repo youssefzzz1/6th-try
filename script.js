@@ -41,6 +41,40 @@
     else if (mq.addListener) mq.addListener(onChange);
   }
 
+  /* En-tête escamotable sur petit écran : masqué quand on descend, rétabli
+     dès que l'on remonte. Inactif au-delà de 780 px, où l'en-tête ne gêne
+     pas, et jamais déclenché lorsqu'un menu est ouvert. */
+  var header = document.querySelector(".site-header");
+  if (header) {
+    var small = window.matchMedia("(max-width: 780px)");
+    var last = window.pageYOffset;
+    var ticking = false;
+
+    var onScroll = function () {
+      var y = window.pageYOffset;
+      var menuOpen =
+        (nav && nav.classList.contains("open")) ||
+        document.querySelector(".lang-menu.open");
+
+      if (!small.matches || menuOpen || y < 120) {
+        header.classList.remove("is-hidden");
+      } else if (y > last + 6) {
+        header.classList.add("is-hidden");
+      } else if (y < last - 6) {
+        header.classList.remove("is-hidden");
+      }
+
+      last = y;
+      ticking = false;
+    };
+
+    window.addEventListener("scroll", function () {
+      if (ticking) return;
+      ticking = true;
+      window.requestAnimationFrame(onScroll);
+    }, { passive: true });
+  }
+
   /* Les photos proviennent de la fiche Google de l'entreprise et certaines
      adresses finissent par expirer. Plutôt qu'une icône d'image brisée, on
      bascule la tuile vers un visuel de remplacement dessiné en CSS. */

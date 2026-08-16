@@ -12,9 +12,15 @@
       ]
     },
     {
-      "source": "/(style.css|script.js|favicon.svg)",
+      "source": "/(.*)\\.(css|js|html|svg)",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=86400" }
+        { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }
+      ]
+    },
+    {
+      "source": "/",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }
       ]
     }
   ]

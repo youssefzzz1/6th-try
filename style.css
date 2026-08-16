@@ -174,7 +174,13 @@ a:hover { color: var(--grey-400); }
   background: rgba(7, 7, 7, .82);
   backdrop-filter: blur(18px);
   border-bottom: 1px solid var(--line);
+  transition: transform .3s var(--ease);
 }
+
+/* Sur petit écran, l'en-tête occupe une part notable de la hauteur utile.
+   Il s'efface donc à la descente et revient dès que l'on remonte : la
+   lecture reste dégagée sans perdre l'accès à la navigation. */
+.site-header.is-hidden { transform: translateY(-100%); }
 
 .header-inner {
   min-height: var(--header-h);
