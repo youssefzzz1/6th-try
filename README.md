@@ -13,6 +13,8 @@ Site statique : aucun build, aucune dépendance, aucun serveur requis.
 | `script.js`   | Menu mobile, année du pied de page, repli des images         |
 | `favicon.svg` | Icône du site                                                |
 | `images/`     | Photos des véhicules nettoyés à l'atelier                    |
+| `robots.txt`  | Directives d'exploration et lien vers le sitemap             |
+| `sitemap.xml` | URL canonique publique                                      |
 
 ### Photos des services
 
@@ -54,15 +56,13 @@ Deployment*, remettre « Framework Preset » sur **Other** et vider le champ
 
 ## À mettre à jour avant la mise en ligne
 
-- `<link rel="canonical">` dans `index.html` — remplacer par le domaine réel.
 - Deux tuiles (« Lavage Extérieur Complet » et « Cire ou Compound ») pointent encore
   vers des photos hébergées sur Google Business Profile. Ces adresses peuvent expirer ;
   il est préférable de déplacer ces images dans `images/` comme les autres.
-- L'adresse municipale exacte peut être ajoutée dans le bloc `application/ld+json`
-  (champ `streetAddress`) afin d'améliorer le référencement local.
 
 ## Coordonnées
 
+**Adresse** — 2510, chemin du Lac, Longueuil (QC) J4N 1G7
 **Téléphone :** 450-679-6095
 **Horaire :** lundi au samedi, 9h00 – 17h00 (fermé le dimanche)
 **Paiement :** comptant seulement
