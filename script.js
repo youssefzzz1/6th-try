@@ -92,3 +92,21 @@
     }
   );
 })();
+
+/* Photos de l’atelier : navigation manuelle, sans lecture automatique. */
+(function () {
+  const gallery = document.querySelector('.work-gallery');
+  if (!gallery) return;
+  const slides = Array.from(gallery.querySelectorAll('figure'));
+  const controls = gallery.querySelector('.gallery-controls');
+  let current = 0;
+  gallery.setAttribute('aria-live', 'polite');
+  controls.hidden = false;
+  controls.addEventListener('click', function (event) {
+    const button = event.target.closest('[data-slide]');
+    if (!button) return;
+    slides[current].hidden = true;
+    current = (current + Number(button.dataset.slide) + slides.length) % slides.length;
+    slides[current].hidden = false;
+  });
+})();
