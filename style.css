@@ -279,29 +279,6 @@ a:hover { color: var(--grey-400); }
   border-bottom: 1px solid var(--line);
 }
 
-.hero-bg {
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  background:
-    linear-gradient(90deg, rgba(6, 15, 20, .97) 5%, rgba(6, 15, 20, .91) 36%, rgba(6, 15, 20, .35) 85%),
-    url("images/lavage-interieur-exterieur.webp") right 55% / cover no-repeat;
-}
-@media (max-width: 780px) {
-  .hero-bg { opacity: .55; }
-}
-.hero-bg::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  opacity: .55;
-  background-image:
-    linear-gradient(rgba(255, 255, 255, .028) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, .028) 1px, transparent 1px);
-  background-size: 74px 74px;
-  mask-image: radial-gradient(circle at 50% 38%, #000 4%, transparent 70%);
-}
-
 .hero-inner { position: relative; max-width: 860px; }
 
 .hero h1 {
@@ -1103,4 +1080,32 @@ a:hover { color: var(--grey-400); }
   .hero-sub, .lede, p { color: #222; }
   .grad { color: #000; -webkit-text-fill-color: #000; }
   .card, .panel, .services, .info, .about, .features { background: #fff !important; }
+}
+
+
+/* Accueil — papier ivoire, encre marine et bleu atelier. */
+@media screen {
+  .hero { background: #f5f4ee; color: #142d38; padding: clamp(54px, 7vw, 100px) 0; }
+  .hero-inner { max-width: 1160px; }
+  .hero .eyebrow { color: #46636b; }
+  .hero h1 { color: #142d38; font-size: clamp(2.65rem, 5.7vw, 5.6rem); line-height: 1.02; }
+  .hero .grad { background: none; color: #12675f; }
+  .hero-sub { color: #42535a; font-weight: 400; }
+  .hero .btn-primary { background: #125e57; border-color: #125e57; color: white; }
+  .hero .btn-ghost { color: #173e45; border-color: #93a9a5; }
+  .hero .btn:hover { background: #183b42; color: white; }
+  .hero .trust-row { display: grid; gap: 0; margin: 36px 0 0; border-block-start: 1px solid #a9b9b3; }
+  .hero .trust-row li { border: 0; border-block-end: 1px solid #becbc6; background: transparent; padding: 16px 0; display: flex; align-items: baseline; justify-content: space-between; gap: 16px; }
+  .hero .trust-row strong { color: #173e45; }
+  .hero .trust-row span { color: #4c625f; text-align: end; }
+  .features { padding-block: clamp(42px, 5vw, 74px); }
+  .feature-ico { background: #125e57; border-radius: 50%; }
+}
+@media screen and (min-width: 960px) {
+  .hero-inner { display: grid; grid-template-columns: minmax(0, 1.8fr) minmax(230px, 1fr); column-gap: 7%; }
+  .hero-inner > * { grid-column: 1; }
+  .hero .trust-row { grid-column: 2; grid-row: 1 / span 4; align-self: center; margin: 0; }
+  .hero .trust-row li { display: grid; gap: 1px; padding-block: 19px; }
+  .hero .trust-row strong { font-size: 2.2rem; }
+  .hero .trust-row span { text-align: start; }
 }
