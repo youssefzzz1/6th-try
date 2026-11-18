@@ -38,7 +38,7 @@
     "feat.price.t": "Abordable", "feat.price.d": "Des prix honnêtes, adaptés à la taille et à l'état du véhicule.",
     "feat.loved.t": "Apprécié", "feat.loved.d": "Des clients fidèles et de vrais avis Google depuis 2007.",
     "about.eyebrow": "Qui sommes-nous", "about.title": "Bienvenue chez Lave Auto Express 2007",
-    "about.text": "Situé au cœur de Longueuil, nous sommes votre destination de choix pour un nettoyage automobile rapide, efficace et abordable. Nous redonnons à votre véhicule son éclat d'origine — avec le souci du détail d'une équipe qui aime ce qu'elle fait.",
+    "about.text": "Au 2510, chemin du Lac à Longueuil, notre équipe lave les voitures à la main depuis 2007. Le lavage extérieur comprend les roues et les pneus. Pour nettoyer aussi l’habitacle, choisissez le lavage intérieur et extérieur avec aspiration et nettoyage des vitres.",
     "about.maps.s": "Trouvez-nous", "about.maps.d": "sur Google Maps",
     "about.rev.s": "Nos avis", "about.rev.d": "sur Google",
     "svc.eyebrow": "Nos services", "svc.title": "Lavage et esthétique automobile",

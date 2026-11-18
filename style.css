@@ -284,9 +284,11 @@ a:hover { color: var(--grey-400); }
   inset: 0;
   z-index: -1;
   background:
-    radial-gradient(1000px 560px at 74% -12%, rgba(255, 255, 255, .10), transparent 60%),
-    radial-gradient(700px 400px at 4% 110%, rgba(255, 255, 255, .05), transparent 62%),
-    linear-gradient(168deg, var(--charcoal) 0%, var(--coal) 44%, var(--black) 100%);
+    linear-gradient(90deg, rgba(6, 15, 20, .97) 5%, rgba(6, 15, 20, .91) 36%, rgba(6, 15, 20, .35) 85%),
+    url("images/lavage-interieur-exterieur.webp") right 55% / cover no-repeat;
+}
+@media (max-width: 780px) {
+  .hero-bg { opacity: .55; }
 }
 .hero-bg::after {
   content: "";
@@ -312,7 +314,7 @@ a:hover { color: var(--grey-400); }
 
 /* Dégradé argenté sur le second vers du titre */
 .grad {
-  background: linear-gradient(96deg, var(--grey-600) 0%, var(--silver) 42%, var(--white) 70%);
+  background: linear-gradient(96deg, #83dfdb 0%, #cff7f2 65%, var(--white) 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
