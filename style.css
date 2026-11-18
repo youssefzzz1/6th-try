@@ -1109,3 +1109,11 @@ a:hover { color: var(--grey-400); }
   .hero .trust-row strong { font-size: 2.2rem; }
   .hero .trust-row span { text-align: start; }
 }
+
+.review-section { background: #eef3ee; color: #173e45; }
+.review-section h2, .review-section a { color: #173e45; }
+.review-section a { text-decoration: underline; }
+#review-panel { margin-block: 1.5rem; padding: clamp(1rem, 4vw, 3rem); background: white; border-inline-start: 4px solid #12675f; }
+#review-panel blockquote { margin: 1rem 0; white-space: pre-line; overflow-wrap: anywhere; }
+#review-panel button { padding: .65rem 1rem; background: #173e45; color: white; cursor: pointer; }
+#review-panel output { padding-inline: .75rem; }

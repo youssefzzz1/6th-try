@@ -47,7 +47,7 @@
     "svc.1.t": "Lavage Extérieur Complet", "svc.1.d": "Un nettoyage extérieur méticuleux pour faire briller votre carrosserie. Inclut le lavage des roues et des pneus.",
     "svc.2.t": "Lavage Intérieur & Extérieur", "svc.2.d": "Notre service vedette. Traitement complet : aspiration de l'habitacle, nettoyage des vitres et lavage extérieur impeccable.", "svc.2.badge": "★ Le plus populaire",
     "svc.3.t": "Cire ou Compound", "svc.3.d": "Protégez la peinture de votre voiture et donnez-lui un lustre éclatant avec notre cire de haute qualité.",
-    "svc.4.t": "Shampooing", "svc.4.d": "Nettoyage en profondeur des tapis, des sièges ou du compartiment moteur pour éliminer taches et saleté incrustée.",
+    "svc.4.t": "Shampooing des sièges et tapis", "svc.4.d": "Nettoyage en profondeur des tapis, des sièges ou du compartiment moteur pour éliminer taches et saleté incrustée.",
     "svc.5.t": "Remise à Neuf", "svc.5.tag": "Forfait luxueux", "svc.5.d": "Le forfait ultime pour redonner à votre voiture son aspect neuf. Inclut tous nos services de nettoyage et de protection.",
     "svc.cta.t": "Un besoin particulier ?", "svc.cta.d": "Chaque véhicule est différent. Appelez-nous et nous vous conseillerons le service le mieux adapté — sans engagement.",
     "info.eyebrow": "Informations pratiques", "info.title": "Tarifs, horaires et paiement",
